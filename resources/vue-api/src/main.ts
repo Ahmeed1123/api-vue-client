@@ -8,8 +8,15 @@ import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 const pinia = createPinia()
 pinia.use(PiniaPluginPersistedstate);
 import {router} from "@/router/index.ts";
-createApp(App)
-    .use(router)
-    .use(pinia)
-    .use(autoAnimatePlugin)
-    .mount('#app')
+import { initializeThemeSetup } from "@/composables/useAppearance.ts";
+const app = createApp(App);
+
+
+app.use(router)
+app.use(pinia)
+app.use(autoAnimatePlugin)
+
+app.mount('#app')
+
+
+initializeThemeSetup();
